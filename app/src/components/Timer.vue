@@ -12,8 +12,21 @@
         <h1 class="text-white font-medium">pomodoro.</h1>
       </div>
       <div class="w-[70%] flex items-center justify-center">
-        <button v-if="!showpaused" class="w-[50%] aspect-square  bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem] " @click="start"><i class="fa-solid fa-play pl-[2%]"></i></button>
-        <button v-if="showpaused" class="w-[50%] aspect-square bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem]" @click="stop"><i class="fa-solid fa-pause"></i></button>
+        <button
+          v-if="!showpaused"
+          class="relative z-10 w-[50%] aspect-square bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem]"
+          @click="start"
+        >
+          <i class="fa-solid fa-play pl-[2%]"></i>
+        </button>
+        <button
+          v-if="showpaused"
+          class="relative z-10 w-[50%] aspect-square bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem]"
+          @click="stop"
+        >
+          <i class="fa-solid fa-pause"></i>
+        </button>
+
       </div>
       <div class="w-[80%] h-3 mt-6 bg-[#ffffff] rounded-full overflow-hidden">
         <div
