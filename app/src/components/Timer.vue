@@ -11,10 +11,15 @@
         />
         <h1 class="text-white font-medium">pomodoro.</h1>
       </div>
-      <div class="w-[50%] h-[10%] flex items-center justify-between">
-        <button v-if="!showpaused" class="w-[80%] bg-amber-500 text-black rounded-4xl h-full" @click="start"><i class="fa-solid fa-play"></i></button>
-        <button v-if="showpaused" class="w-[80%] bg-amber-500 rounded-4xl h-full" @click="stop"><i class="fa-solid fa-pause"></i></button>
-        <i class="fa-solid fa-rotate-right text-white text-4xl"></i>
+      <div class="w-[70%] flex items-center justify-center">
+        <button v-if="!showpaused" class="w-[50%] aspect-square  bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem] " @click="start"><i class="fa-solid fa-play pl-[2%]"></i></button>
+        <button v-if="showpaused" class="w-[50%] aspect-square bg-[#F4ECD8] flex justify-center items-center text-black text-5xl rounded-[100rem]" @click="stop"><i class="fa-solid fa-pause"></i></button>
+      </div>
+      <div class="w-[80%] h-3 mt-6 bg-[#ffffff] rounded-full overflow-hidden">
+        <div
+          class="h-full bg-[#D8C8A6] origin-left transform transition-transform duration-1000 ease-linear"
+          :style="{ transform: `scaleX(${progress / 100})` }"
+        ></div>
       </div>
     </div>
   </template>
@@ -27,6 +32,10 @@
   const isFocused = ref(false);
   let countdown = 0; // seconds remaining
   let timerId = null;
+  const progress = ref(0);
+  let originalCountdown = 0; // to calculate progress later
+  const transitionEnabled = ref(true);
+
   
   function onBlur() {
     const newVal = usertime.value;
@@ -75,6 +84,7 @@
     console.log('Converted on blur:', currenttime.value);
   
     countdown = timeToSeconds(padded);
+    originalCountdown = countdown; // Save the starting value for progress tracking
   }
   
   function handleBlur(e) {
@@ -129,10 +139,14 @@
       if (countdown > 0) {
         countdown--;
         currenttime.value = formatCountdown(countdown);
+        progress.value = ((originalCountdown - countdown) / originalCountdown) * 100;
       } else {
+        progress.value = 0; // Reset progress only on natural finish
         stop();
       }
     }, 1000);
+
+
     showpaused.value = true
   }
   
