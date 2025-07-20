@@ -2,7 +2,7 @@
     <div class="w-full h-full flex flex-col items-center justify-evenly">
       <div class="w-full flex flex-col items-center">
         <h1 class="w-[80%] text-center font-[digital-clock-font] font-stretch-90% text-[rgba(0,0,0,0.7)] font-bold text-7xl">{{ convert(currentTime) }}</h1>
-        <h1 class="text-white font-medium">pomodoro.</h1>
+        <h1 class="text-black font-medium">pomodoro.</h1>
       </div>
       
       <button v-if="!showpaused" class="w-[80%] bg-amber-500 rounded-4xl h-[10%]" @click="start">

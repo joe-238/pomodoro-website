@@ -2,14 +2,14 @@
     <div class="w-full h-full flex flex-col items-center justify-evenly">
       <div class="w-full flex flex-col items-center">
         <input
-          class="w-[80%] placeholder:text-center focus:outline-none text-center font-[digital-clock-font] font-stretch-90% text-[rgba(255,255,255,0.7)] font-bold text-7xl "
+          class="w-[80%] placeholder:text-center focus:outline-none text-center font-[digital-clock-font] font-stretch-90% text-[rgba(0,0,0,0.7)] font-bold text-7xl "
           :value="isFocused ? usertime : currenttime"
           @input="e => usertime = e.target.value"
           @focus="isFocused = true"
           @blur="handleBlur"
           placeholder="00:00:00"
         />
-        <h1 class="text-white font-medium">pomodoro.</h1>
+        <h1 class="text-black font-medium">pomodoro.</h1>
       </div>
       <div class="w-[70%] flex items-center justify-center">
         <button
@@ -30,7 +30,7 @@
       </div>
       <div class="w-[80%] h-3 mt-6 bg-[#ffffff] rounded-full overflow-hidden">
         <div
-          class="h-full bg-[#D8C8A6] origin-left transform transition-transform duration-1000 ease-linear"
+          class="h-full bg-[#3C3C3C] origin-left transform transition-transform duration-1000 ease-linear"
           :style="{ transform: `scaleX(${progress / 100})` }"
         ></div>
       </div>
@@ -146,6 +146,7 @@
 
   
   function start() {
+    console.log('Starting with countdown:', countdown);
     if (timerId || countdown <= 0) return;
   
     timerId = setInterval(() => {

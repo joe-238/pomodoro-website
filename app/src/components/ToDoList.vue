@@ -8,6 +8,7 @@
             <div v-for="todo in list" class="task text-white w-[90%] flex items-center gap-5 align-text-bottom">
                 <i class="fa-solid fa-leaf"></i>
                 <h1 @click="" class="break-all ">{{todo.description}}</h1>
+                
             </div>
         </div>
         

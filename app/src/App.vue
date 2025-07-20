@@ -55,6 +55,7 @@
         <ToDoList />
       </div>
     </div>
+    <!-- <spotify /> -->
   </div>
 </template>
 
@@ -63,6 +64,7 @@ import Stopwatch from './components/Stopwatch.vue';
 import Timer from './components/Timer.vue';
 import ToDoList from './components/ToDoList.vue';
 import TimeRn from './components/TimeRn.vue';
+import spotify from './components/spotify.vue';
 import { ref } from 'vue';
 
 const container = ref('timer');
